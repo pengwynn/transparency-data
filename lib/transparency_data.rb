@@ -8,6 +8,8 @@ Hash.send :include, Hashie::HashExtensions
 
 module TransparencyData
   
+  VERSION = "0.0.1".freeze
+  
   # config/initializers/transparency_data.rb (for instance)
   # 
   # TransparencyData.configure do |config|
@@ -43,6 +45,7 @@ module TransparencyData
   def self.api_key=(value)
     @api_key = value
   end
+
   
 end
 
