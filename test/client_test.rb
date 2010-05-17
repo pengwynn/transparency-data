@@ -3,9 +3,6 @@ require File.dirname(__FILE__) + '/helper'
 class ClientTest < Test::Unit::TestCase
   
   context "when consuming the Sunlight Transparency Data API" do
-    setup do
-      TransparencyData.api_key = "OU812" 
-    end
     
     context "when handling parameters" do
 
