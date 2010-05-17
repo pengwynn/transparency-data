@@ -42,12 +42,11 @@ class ClientTest < Test::Unit::TestCase
       end
     end
     
-    
     context "when searching lobbyists" do
 
-      should_eventually "return a list of lobbying events" do
+      should "return a list of lobbying events" do
         VCR.use_cassette('lobbying events', :record => :all) do
-          lobbying = TransparencyData::Client.lobbying(:amount => {:gte => 5000}, :date => {:between => ["2009-03-04", "2009-03-10"]})
+          lobbying = TransparencyData::Client.lobbying(:client_ft => "apple inc")
           lobbying.class.to_s.should == 'Array'
         end
       end
