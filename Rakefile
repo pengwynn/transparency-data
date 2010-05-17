@@ -1,6 +1,5 @@
 require "mg"
 
-
 MG.new("transparency_data.gemspec")
 
 require 'rake/testtask'

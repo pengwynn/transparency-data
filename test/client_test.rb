@@ -21,12 +21,10 @@ class ClientTest < Test::Unit::TestCase
           TransparencyData::Client.prepare_params(original).should == prepared
         end
         
-        
       end
     end
     
     context "when searching contributions" do
-
 
       should "return a list" do
         VCR.use_cassette('contributions', :record => :all) do
