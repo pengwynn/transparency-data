@@ -103,10 +103,18 @@ class ClientTest < Test::Unit::TestCase
       end
       
       should "return a list of top sectors" do
-        VCR.use_cassette('top 5 contributors') do
+        VCR.use_cassette('top sectors') do
           sectors = TransparencyData::Client.top_sectors("ff96aa62d48f48e5a1e284efe74a0ba8")
           sectors.class.should == Array
-          sectors.first.name.should == "Finance/Insurance/Real Estate"
+          sectors.first.name.class.should == String
+        end
+      end
+
+      should "return a list of top industries within sector" do
+        VCR.use_cassette('top industries within sector') do
+          industries = TransparencyData::Client.top_industries("ff96aa62d48f48e5a1e284efe74a0ba8","F")
+          industries.class.should == Array
+          industries.first.count.class.should == Fixnum
         end
       end
 

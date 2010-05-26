@@ -62,6 +62,15 @@ module TransparencyData
       end
     end
 
+    get(:top_industries) do |id, sector, api_params|
+      uri TransparencyData.api_url("/aggregates/pol/#{id}/contributors/sector/#{sector}/industries")
+      params TransparencyData::Client.prepare_params(api_params) if api_params
+      handler do |response|
+        TransparencyData::Client.handle_response(response)
+      end
+    end
+
+
     get(:local_breakdown) do |id, api_params|
       uri TransparencyData.api_url("/aggregates/pol/#{id}/contributors/local_breakdown")
       params TransparencyData::Client.prepare_params(api_params) if api_params
