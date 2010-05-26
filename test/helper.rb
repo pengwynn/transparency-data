@@ -23,5 +23,6 @@ end
 
 VCR.config do |c|
   c.cassette_library_dir = 'test/fixtures/vcr_cassettes'
-  c.http_stubbing_library = :fakeweb # or :webmock
+  c.http_stubbing_library = :fakeweb
+  c.default_cassette_options = { :record => :new_episodes }
 end
