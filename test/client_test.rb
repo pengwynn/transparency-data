@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/helper'
 
 class ClientTest < Test::Unit::TestCase
   
-  context "when consuming the Sunlight Transparency Data API" do
+  context "when using Client" do
     
     context "when handling parameters" do
 
@@ -129,6 +129,59 @@ class ClientTest < Test::Unit::TestCase
         VCR.use_cassette('contributor type breakdown') do
           local_breakdown = TransparencyData::Client.contributor_type_breakdown("ff96aa62d48f48e5a1e284efe74a0ba8")
           local_breakdown.individual_count.class.should == Fixnum
+        end
+      end
+
+    end
+    
+    context "individual (contributor) methods" do
+
+      should "return a list of top recipient organizations" do
+        VCR.use_cassette('top recipient organizations') do
+          recipient_orgs = TransparencyData::Client.top_recipient_orgs("945bcd0635bc434eacb7abcdcd38abea")
+          recipient_orgs.class.should == Array
+          recipient_orgs.length.should == 10
+        end
+      end
+
+      should "return a list of top recipient politicians" do
+        VCR.use_cassette('top recipient politicians') do
+          recipient_pols = TransparencyData::Client.top_recipient_pols("945bcd0635bc434eacb7abcdcd38abea")
+          recipient_pols.class.should == Array
+          recipient_pols.length.should == 10
+        end
+      end
+      
+      should "return a party breakdown" do
+        VCR.use_cassette('individual party breakdown') do
+          party_breakdown = TransparencyData::Client.individual_party_breakdown("945bcd0635bc434eacb7abcdcd38abea")
+          party_breakdown.dem_count.class.should == Fixnum
+        end
+      end
+
+    end
+
+    context "organization methods" do
+
+      should "return a list of top organization recipients" do
+        VCR.use_cassette('top org recipients') do
+          org_recipients = TransparencyData::Client.top_org_recipients("4ef624f6877a49f2b591b2a8af4c5bf5")
+          org_recipients.class.should == Array
+          org_recipients.length.should == 10
+        end
+      end
+      
+      should "return a party breakdown" do
+        VCR.use_cassette('org party breakdown') do
+          party_breakdown = TransparencyData::Client.org_party_breakdown("4ef624f6877a49f2b591b2a8af4c5bf5")
+          party_breakdown.dem_count.class.should == Fixnum
+        end
+      end
+      
+      should "return a state/federal level breakdown" do
+        VCR.use_cassette('org level breakdown') do
+          level_breakdown = TransparencyData::Client.org_level_breakdown("73c18c499c1b4a71b2b042663530e9b7")
+          level_breakdown.state_count.class.should == Fixnum
         end
       end
 
