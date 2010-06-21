@@ -49,4 +49,4 @@ module TransparencyData
   
 end
 
-require 'lib/transparency_data/client'
+Dir.glob(File.dirname(__FILE__) + '/transparency_data/*.rb').each { |f| require f }
