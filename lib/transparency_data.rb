@@ -8,7 +8,7 @@ Hash.send :include, Hashie::HashExtensions
 
 module TransparencyData
   
-  VERSION = "0.0.1".freeze
+  VERSION = "0.0.3".freeze
   
   # config/initializers/transparency_data.rb (for instance)
   # 

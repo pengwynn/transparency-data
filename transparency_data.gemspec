@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name              = "transparency_data"
-  s.version           = "0.0.1"
-  s.date              = "2010-05-06"
+  s.version           = "0.0.3"
+  s.date              = "2010-06-21"
   s.summary           = "Wrapper for the Sunlight Transparency data API"
   s.description       = "Wrapper for the Sunlight Transparency data API"
-  s.homepage          = "http://github.com/pengwynn/transparency_data"
+  s.homepage          = "http://github.com/pengwynn/transparency-data"
   s.email             = ["wynn.netherland@gmail.com", "jeremy@hinegardner.org", "luigi.montanez@gmail.com"]
   s.authors           = [
     "Wynn Netherland",
