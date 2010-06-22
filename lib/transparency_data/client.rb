@@ -200,12 +200,12 @@ module TransparencyData
     end
     
     def self.process_party_breakdown(breakdown)
-      TransparencyData::Client.mashize_key(breakdown, "D", "dem")
-      TransparencyData::Client.mashize_key(breakdown, "R", "rep")
+      TransparencyData::Client.mashize_key(breakdown, "Democrats", "dem")
+      TransparencyData::Client.mashize_key(breakdown, "Republicans", "rep")
       TransparencyData::Client.mashize_key(breakdown, "L", "lib")
       TransparencyData::Client.mashize_key(breakdown, "I", "ind")
       TransparencyData::Client.mashize_key(breakdown, "U", "unknown")
-      TransparencyData::Client.mashize_key(breakdown, "U", "other")
+      TransparencyData::Client.mashize_key(breakdown, "Other", "other")
       TransparencyData::Client.mashize_key(breakdown, "3", "third")
       breakdown
     end
@@ -216,7 +216,7 @@ module TransparencyData
       TransparencyData::Client.mashize_key(breakdown, "L", "lib")
       TransparencyData::Client.mashize_key(breakdown, "I", "ind")
       TransparencyData::Client.mashize_key(breakdown, "U", "unknown")
-      TransparencyData::Client.mashize_key(breakdown, "U", "other")
+      TransparencyData::Client.mashize_key(breakdown, "Other", "other")
       TransparencyData::Client.mashize_key(breakdown, "3", "third")
       breakdown
     end
@@ -230,7 +230,7 @@ module TransparencyData
     def self.mashize_key(breakdown, api_key, mash_key)
       if breakdown[api_key]
         breakdown["#{mash_key}_count"]  = breakdown[api_key][0].to_i
-        breakdown["#{mash_key}_amount"]  = breakdown[api_key][1].to_f
+        breakdown["#{mash_key}_amount"] = breakdown[api_key][1].to_f
       end
     end
 
