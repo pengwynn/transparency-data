@@ -19,6 +19,11 @@ class ClientTest < Test::Unit::TestCase
         end
         
       end
+      
+      should "remove problematic characters" do
+        assert_equal TransparencyData::Client.prepare_params({:search => "Yahoo!"}), {:search => "Yahoo"}
+        
+      end
     end
     
     context "when searching contributions" do

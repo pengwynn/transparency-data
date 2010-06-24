@@ -155,6 +155,9 @@ module TransparencyData
           
         elsif value.is_a?(Array)
           params[key] = value.join("|")
+        
+        elsif value.is_a?(String)
+          params[key] = value.sub(/[\*\?!=&%]/,'')
         end
       end
       params
