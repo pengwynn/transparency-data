@@ -8,11 +8,11 @@ class TransparencyDataTest < Test::Unit::TestCase
       TransparencyData.configure do |config|
         config.api_key = "OU812"
       end
-      TransparencyData.api_key.should == "OU812"
+      assert_equal TransparencyData.api_key, "OU812"
     end
     
     should "provide helpers for URLs" do
-      TransparencyData.api_url("/contributions").should == "http://#{TransparencyData.api_domain}/api/1.0/contributions.json"
+      assert_equal TransparencyData.api_url("/contributions"), "http://#{TransparencyData.api_domain}/api/1.0/contributions.json"
     end
     
   end
