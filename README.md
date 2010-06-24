@@ -24,6 +24,8 @@ Within a Rails app, create a `config/initializers/transparency_data.rb` and stic
      config.api_key = 'YOUR_KEY_HERE'
     end
 
+Optionally, you can set `TransparencyData.api_domain` if you don't want to hit the production API at `transparencydata.com`.
+
 ## Usage
 
 See the official [API docs](http://transparencydata.com/api/) for all parameters you can send in, and the [schema docs](http://transparencydata.com/docs/) for what you get back:

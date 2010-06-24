@@ -1,5 +1,5 @@
 .DS_Store
 coverage/
 dist/
-key.yml
+api.yml
 *.gem

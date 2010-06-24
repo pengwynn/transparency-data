@@ -13,8 +13,10 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'transparency_data'
-config = YAML.load_file(File.dirname(__FILE__) + '/../key.yml')
-TransparencyData.api_key = config['api_key']
+api_config = YAML.load_file(File.dirname(__FILE__) + '/../api.yml')
+TransparencyData.api_key = api_config['key']
+TransparencyData.api_domain = api_config['domain'] if api_config['domain']
+
 
 class Test::Unit::TestCase
 end

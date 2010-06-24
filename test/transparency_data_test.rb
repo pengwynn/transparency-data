@@ -12,7 +12,7 @@ class TransparencyDataTest < Test::Unit::TestCase
     end
     
     should "provide helpers for URLs" do
-      TransparencyData.api_url("/contributions").should == "http://transparencydata.com/api/1.0/contributions.json"
+      TransparencyData.api_url("/contributions").should == "http://#{TransparencyData.api_domain}/api/1.0/contributions.json"
     end
     
   end
