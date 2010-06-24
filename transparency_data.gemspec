@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name              = "transparency_data"
-  s.version           = "0.0.3"
-  s.date              = "2010-06-21"
+  s.version           = "0.0.4"
+  s.date              = "2010-06-24"
   s.summary           = "Wrapper for the Sunlight Transparency data API"
   s.description       = "Wrapper for the Sunlight Transparency data API"
   s.homepage          = "http://github.com/pengwynn/transparency-data"
