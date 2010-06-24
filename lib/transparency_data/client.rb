@@ -140,6 +140,14 @@ module TransparencyData
       end
     end
 
+    get(:recipient_contributor_summary) do |recipient_id, contributor_id, api_params|
+      uri TransparencyData.api_url("/aggregates/recipient/#{recipient_id}/contributor/#{contributor_id}/amount")
+      params TransparencyData::Client.prepare_params(api_params) if api_params
+      handler do |response|
+        Hashie::Mash.new(JSON.parse(response.body))
+      end
+    end
+
     def self.prepare_params(params)
       params.each do |key, value|
         if value.is_a?(Hash)

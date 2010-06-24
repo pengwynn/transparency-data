@@ -219,6 +219,28 @@ class ClientTest < Test::Unit::TestCase
       end
 
     end
+    
+    context "recipient methods" do
+
+      setup do
+        boone = TransparencyData::Client.entities(:search => "t boone pickens")
+        boone.each do |entity|
+          @boone_id = entity.id if entity['type'] == "individual"
+        end
+        ted = TransparencyData::Client.entities(:search => "ted stevens")
+        ted.each do |entity|
+          @stevens_id = entity.id if entity['type'] == "politician"
+        end
+      end
+
+      should "return a contributor summary" do
+        VCR.use_cassette('recipient contributor summary') do
+          summary = TransparencyData::Client.recipient_contributor_summary(@stevens_id, @boone_id)
+          assert_equal summary.amount.class, Fixnum
+        end
+      end
+      
+    end
 
   end
   
